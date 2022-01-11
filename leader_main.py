@@ -33,7 +33,7 @@ def on_stopped():
 if __name__ == '__main__':
     config = electionconfig.Config(ConfigMapLock(lock_name, lock_namespace, candidate_id), lease_duration=30,
                                renew_deadline=15, retry_period=5, onstarted_leading=on_started,
-                               onstopped_leading=on_stopped, release_on_cancel=True)
+                               onstopped_leading=on_stopped)  # release_on_cancel=True
 
     leaderelection.LeaderElection(config).run()
     print("Exited leader election")
